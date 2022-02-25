@@ -1,0 +1,84 @@
+{% extends 'BRadmin_index.html' %} {% load static %} {% block content %}
+
+
+
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Involved Projects</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="color:white;">
+                </div>
+                <div class="table-responsive">
+                    <table class="table" id="myTable">
+                        <thead>
+                            <tr class="header">
+                                <th>
+
+                                </th>
+                                <th> Project Name </th>
+                                <th> Start Date </th>
+                                <th> End Date </th>
+
+                                <th> Progress bar </th>
+                                <th> Status </th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {% for dev in dev_data %}
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-muted m-0">
+                                        <label class="form-check-label">
+                        <input type="text" class="form-check-input">1
+                      </label>
+                                    </div>
+                                </td>
+                                <td>
+
+                                    <span class="ps-2">{{ dev.project }}</span>
+                                </td>
+                                <td> {{ dev.startdate }} </td>
+                                <td> {{ dev.enddate }} </td>
+
+                                <td>
+                                    <div class="progress" style="height:20px;">
+                                        <div class="progress-bar bg-success" style="height:20px;width:{{dev.progress}}%">{{dev.progress}}%</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="badge badge-outline-secondary">{{ dev.status }}</div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}

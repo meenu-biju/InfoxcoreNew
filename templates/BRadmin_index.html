@@ -39,6 +39,7 @@
 </style>
 
 <body>
+ 
   <div class="container-scroller">
 
     <!-- partial:partials/_sidebar.html -->
@@ -97,7 +98,7 @@
           <span class="nav-link">Navigation</span>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href='/base_app/BRadmin_profiledash_new'>
+          <a class="nav-link" href='/base_app/BRadmin_profiledash'>
             <span class="menu-icon">
               <i class="mdi mdi-apps"></i>
             </span>
@@ -105,7 +106,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="upcoming">
+          <a class="nav-link" href="/base_app/upcoming">
             <span class="menu-icon">
               <i class="mdi mdi-cube-outline"></i>
             </span>
@@ -113,7 +114,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="BRadmin_tasks">
+          <a class="nav-link" href="/base_app/BRadmin_tasks">
             <span class="menu-icon">
               <i class="mdi mdi-clipboard-text"></i>
             </span>
@@ -121,7 +122,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="admin_intern_newreg">
+          <a class="nav-link" href="#">
             <span class="menu-icon">
               <i class="mdi mdi-certificate"></i>
             </span>
@@ -129,7 +130,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="BRadmin_registration">
+          <a class="nav-link" href="#">
             <span class="menu-icon">
               <i class="mdi mdi-file-document-box"></i>
             </span>
@@ -145,7 +146,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href='newdept'>
+          <a class="nav-link" href='/base_app/newdept'>
             <span class="menu-icon">
               <i class="mdi mdi-folder-plus"></i>
             </span>
@@ -154,7 +155,7 @@
         </li>
 
         <li class="nav-item menu-items">
-          <a class="nav-link" href="{% url 'BRadmin_Reportedissue' %}">
+          <a class="nav-link" href='/base_app/BRadmin_Reportedissue'>
             <span class="menu-icon">
               <i class= "mdi mdi-file-document-box"></i>
             </span>
@@ -162,7 +163,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/base_app/BRadmin_page1">
             <span class="menu-icon">
               <i class="mdi mdi-human-greeting"></i>
             </span>
@@ -170,7 +171,7 @@
           </a>
         </li>
         <li class="nav-item menu-items">
-          <a class="nav-link" href="admin_leaveform">
+          <a class="nav-link" href="#">
             <span class="menu-icon">
               <i class="mdi mdi-calendar-check"></i>
             </span>
@@ -206,14 +207,14 @@
                 <h6 class="p-3 mb-0">Profile</h6>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
+                <a class="dropdown-item preview-item" href="/base_app/logout">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-logout text-danger"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Log out</p>
+                   <p  class="preview-subject mb-1">Logout</p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
@@ -268,6 +269,7 @@
       <script src="{% static 'assets/js/chart.js'%}"></script>
 
       <script src="{% static '/assets/js/file-upload.js' %}"></script>
+     
 </body>
 
 </html>

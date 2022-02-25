@@ -3,65 +3,34 @@ from django.urls import re_path
 
 
 urlpatterns=[ 
-    re_path(r'^$',views.index,name='index'),
+    re_path(r'^$',views.login,name='login'),
+    re_path(r'^logout$',views.logout,name='logout'),
+    re_path(r'^index$',views.index,name='index'),
     re_path(r'^newdept$',views.newdept,name='newdept'),
     re_path(r'^add_dept$',views.add_dept,name='add_dept'),
     re_path(r'^add_deptsave$',views.add_deptsave,name='add_deptsave'),
     re_path(r'^delete/(?P<id>\d+)$', views.delete,name='delete'),
-    re_path(r'^delete/(?P<id>\d+)/',views.delete, name='delete'),
 
-    #safdhar
-
+   #safdhar
     re_path(r'^upcoming$', views.upcoming, name='upcoming'),
     re_path(r'^viewprojectform$', views.viewprojectform, name='viewprojectform'),
     re_path(r'^acceptedprojects$', views.acceptedprojects, name='acceptedprojects'),
     re_path(r'^rejected$', views.rejected, name='rejected'),
     re_path(r'^createproject$', views.createproject, name='createproject'),
     re_path(r'^upcomingpro$', views.upcomingpro, name='upcomingpro'),
+    re_path(r'^seradmintraineedesi1$', views.seradmintraineedesi1, name='seradmintraineedesi1'),
+    re_path(r'^seradmindesig$', views.seradmindesig, name='seradmindesig'),
+    
 
+    
 
    #nimisha
     re_path(r'^BRadmin_tasks$', views.BRadmin_tasks, name='BRadmin_tasks'),
-    re_path(r'^BRadmin_givetask$', views.BRadmin_givetask, name='BRadmin_givetask'),
+    re_path(r'BRadmin_givetask$', views.BRadmin_givetask, name='BRadmin_givetask'),
     re_path(r'^BRadmin_currenttasks$', views.BRadmin_currenttasks, name='BRadmin_currenttasks'),
     re_path(r'^BRadmin_previoustasks$', views.BRadmin_previoustasks, name='BRadmin_previoustasks'),
-
-    #christin
-    
-#******************** new Internship************************************#
-    re_path( r'^admin_intern_newreg', views.admin_intern_newreg, name='admin_intern_newreg'),
-    re_path( r'^admin_intern_showreg', views.admin_intern_showreg, name='admin_intern_showreg'),
-    re_path( r'^admin_intern_showdetails', views.admin_intern_showdetails, name='admin_intern_showdetails'),
-    re_path( r'^admin_intern_detailupdate', views.admin_intern_detailupdate, name='admin_intern_detailupdate'),
-    re_path( r'^admin_intern_delete', views.admin_intern_delete, name='admin_intern_delete'),
-    re_path( r'^admin_intern_bydate', views.admin_intern_bydate, name='admin_intern_bydate'),
-    re_path( r'^admin_intern_showbydate', views.admin_intern_showbydate, name='admin_intern_showbydate'),
-
-    #******************leaveform***************************************#
-
-    re_path( r'^admin_leaveform', views.admin_leaveform, name='admin_leaveform'),
-    re_path( r'^admin_leave_delete', views.admin_leave_delete, name='admin_leave_delete'),
-    re_path( r'^pdf', views.render_pdf_view, name='render_pdf_view'),
-
-    #***************bibin leave*******************
-    re_path(r'^leave$', views.leave, name='leave'),
-    re_path(r'^admin_leave_form$', views.admin_leave_form, name='admin_leave_form'),
-
-#************************Amal internship***********************
-
-    re_path(r'^internshipregister$', views.internshipregister, name='internshipregister'),
-    re_path(r'^internshipregister1$', views.internshipregister1, name='internshipregister1'),
-
-#*******************************qrcode******************
-
-
-    re_path(r'^admin_code$', views.admin_code, name='admin_code'),
-    re_path(r'^qrcodenew$', views.qrcodenew, name='qrcodenew'),
-    re_path(r'^BRadmin_registration$', views.BRadmin_registration, name='BRadmin_registration'),
-    # re_path(r'^BRadmin_regupdatedetails', views.BRadmin_regupdatedetails, name='BRadmin_regupdatedetails'),
-    re_path(r'^BRadmin_registration_update/(?P<id>\d+)$', views.BRadmin_registration_update, name='BRadmin_registration_update'),
-
-
+    re_path(r'emp$', views.emp, name='emp'),
+    re_path(r'desi$', views.desi, name='desi'),
 
  # akhil p t
 
@@ -71,23 +40,11 @@ urlpatterns=[
     re_path(r'^BRadmin_ReportedissueShow1/(?P<id>\d+)$', views.BRadmin_ReportedissueShow1, name='BRadmin_ReportedissueShow1'),
 
 
-#subeesh
-   
-    re_path(r'^BRadmin_profiledash_new$', views.BRadmin_profiledash_new,name='BRadmin_profiledash_new'),
-    re_path(r'^BRadmin_projects_new$', views.BRadmin_projects_new, name='BRadmin_projects_new'),
-    re_path(r'^BRadmin_proj_cmpltd_new$', views.BRadmin_proj_cmpltd_new, name='BRadmin_proj_cmpltd_new'),
-    # re_path(r'^BRadmin_proj_det$', views.BRadmin_proj_det, name='BRadmin_proj_det'),
-    re_path(r'^BRadmin_cmpltd_proj_det_new/(?P<id>\d+)/$', views.BRadmin_cmpltd_proj_det_new, name='BRadmin_cmpltd_proj_det_new'),
-    re_path(r'^BRadmin_proj_mngrs_new/(?P<id>\d+)/$', views.BRadmin_proj_mngrs_new, name='BRadmin_proj_mngrs_new'),
-    re_path(r'^BRadmin_proj_mangrs1_new/(?P<id>\d+)/$', views.BRadmin_proj_mangrs1_new, name='BRadmin_proj_mangrs1_new'),
-    re_path(r'^BRadmin_proj_mangrs2_new/(?P<id>\d+)/$', views.BRadmin_proj_mangrs2_new, name='BRadmin_proj_mangrs2_new'),
-    re_path(r'^BRadmin_developers_new/(?P<id>\d+)/$', views.BRadmin_developers_new, name='BRadmin_developers_new'),
-    re_path(r'^BRadmin_daily_report_new/(?P<id>\d+)/$', views.BRadmin_daily_report_new, name='BRadmin_daily_report_new'),
 
  #sharon
- # 
- # 
-    re_path(r'^$', views.BRadmin_profiledash,name='BRadmin_profiledash'),
+
+
+    re_path(r'^BRadmin_profiledash$', views.BRadmin_profiledash,name='BRadmin_profiledash'),
     re_path(r'^BRadmin_employees$', views.BRadmin_employees, name='BRadmin_employees'),
     re_path(r'^BRadmin_python$', views.BRadmin_python, name='BRadmin_python'),
     # re_path(r'^BRadmin_index$', views.BRadmin_index, name='BRadmin_index'),
@@ -101,5 +58,84 @@ urlpatterns=[
     # re_path(r'^BRadmin_cmpltd_proj_det$', views.BRadmin_cmpltd_proj_det, name='BRadmin_cmpltd_proj_det'),
     re_path(r'^BRadmin_daily_report/(?P<id>\d+)/$', views.BRadmin_daily_report, name='BRadmin_daily_report'),
     re_path(r'^BRadmin_developers/(?P<id>\d+)/$', views.BRadmin_developers, name='BRadmin_developers'),
-   
+
+
+    #subeesh
+    # re_path(r'^BRadmin_profiledash_new$', views.BRadmin_profiledash_new,name='BRadmin_profiledash_new'),
+    re_path(r'^BRadmin_employees_new$', views.BRadmin_employees_new, name='BRadmin_employees_new'),
+    re_path(r'^BRadmin_python_new$', views.BRadmin_python_new, name='BRadmin_python_new'),
+    re_path(r'^BRadmin_projects_new/(?P<id>\d+)$', views.BRadmin_projects_new, name='BRadmin_projects_new'),
+    re_path(r'^BRadmin_proj_cmpltd_new/(?P<id>\d+)$', views.BRadmin_proj_cmpltd_new, name='BRadmin_proj_cmpltd_new'),
+    # re_path(r'^BRadmin_proj_det$', views.BRadmin_proj_det, name='BRadmin_proj_det'),
+    re_path(r'^BRadmin_cmpltd_proj_det_new/(?P<id>\d+)/$', views.BRadmin_cmpltd_proj_det_new, name='BRadmin_cmpltd_proj_det_new'),
+    re_path(r'^BRadmin_proj_mngrs_new/(?P<id>\d+)/$', views.BRadmin_proj_mngrs_new, name='BRadmin_proj_mngrs_new'),
+    re_path(r'^BRadmin_proj_mangrs1_new/(?P<id>\d+)/$', views.BRadmin_proj_mangrs1_new, name='BRadmin_proj_mangrs1_new'),
+    re_path(r'^BRadmin_proj_mangrs2_new/(?P<id>\d+)/$', views.BRadmin_proj_mangrs2_new, name='BRadmin_proj_mangrs2_new'),
+    re_path(r'^BRadmin_developers_new/(?P<id>\d+)/$', views.BRadmin_developers_new, name='BRadmin_developers_new'),
+    re_path(r'^BRadmin_daily_report_new/(?P<id>\d+)/$', views.BRadmin_daily_report_new, name='BRadmin_daily_report_new'),
+
+ 
+#    #anandhu
+    re_path(r'^BRadmin_department_new$', views.BRadmin_department_new, name='BRadmin_department_new'),
+    re_path(r'^BRadmin_python$', views.BRadmin_python, name='BRadmin_python'),
+    re_path(r'^BRadmin_projectman$', views.BRadmin_projectman, name='BRadmin_projectman'),
+    re_path(r'^BRadmin_proname/(?P<id>\d+)$', views.BRadmin_proname, name='BRadmin_proname'),
+    re_path(r'^BRadmin_proinvolve/(?P<id>\d+)$', views.BRadmin_proinvolve, name='BRadmin_proinvolve'),
+    re_path(r'^BRadmin_promanatten/(?P<id>\d+)/$', views.BRadmin_promanatten, name='BRadmin_promanatten'),
+    re_path(r'^BRadmin_promanattensort/(?P<id>\d+)/$', views.BRadmin_promanattensort, name='BRadmin_promanattensort'),
+
+
+    re_path(r'^BRadmin_HRattendance/(?P<id>\d+)/$', views.BRadmin_HRattendance, name='BRadmin_HRattendance'),
+    re_path(r'^BRadmin_HRattendancesort/(?P<id>\d+)/$', views.BRadmin_HRattendancesort, name='BRadmin_HRattendancesort'),
+    re_path(r'^BRadmin_HRlist$', views.BRadmin_HRlist, name='BRadmin_HRlist'),
+    re_path(r'^BRadmin_HRprofile/(?P<id>\d+)$', views.BRadmin_HRprofile, name='BRadmin_HRprofile'),
+    
+    re_path(r'^BRadmin_TLattendance/(?P<id>\d+)/$', views.BRadmin_TLattendance, name='BRadmin_TLattendance'),
+    re_path(r'^BRadmin_TLattendancesort/(?P<id>\d+)/$', views.BRadmin_TLattendancesort, name='BRadmin_TLattendancesort'),
+    re_path(r'^BRadmin_TLip/(?P<id>\d+)$', views.BRadmin_TLip, name='BRadmin_TLip'),
+    re_path(r'^BRadmin_TLlist$', views.BRadmin_TLlist, name='BRadmin_TLlist'),
+    re_path(r'^BRadmin_TLprofile/(?P<id>\d+)$', views.BRadmin_TLprofile, name='BRadmin_TLprofile'),
+
+
+    re_path(r'^BRadmin_dev_details$',views.BRadmin_dev_details,name='BRadmin_dev_details'),
+    re_path(r'^BRadmin_dev_profile/(?P<id>\d+)$',views.BRadmin_dev_profile,name='BRadmin_dev_profile'),
+    re_path(r'^BRadmin_dev_involved/(?P<id>\d+)$',views.BRadmin_dev_involved,name='BRadmin_dev_involved'),
+    re_path(r'^BRadmin_dev_attendance/(?P<id>\d+)/$',views.BRadmin_dev_attendance,name='BRadmin_dev_attendance'),
+    re_path(r'^BRadmin_dev_attendancesort/(?P<id>\d+)/$', views.BRadmin_dev_attendancesort, name='BRadmin_dev_attendancesort'),
+    re_path(r'^BRadmin_page1$',views.page1,name='page1'),
+    re_path(r'^BRadmin_page2$',views.page2,name='page2'),
+
+    #praveen
+
+    re_path(r'^BRadmin_trainerstable$', views.BRadmin_trainerstable,name='BRadmin_trainerstable'),
+    re_path(r'^BRadmin_Training/(?P<id>\d+)$', views.BRadmin_Training,name='BRadmin_Training'),
+    re_path(r'^BRadmin_trainingteam1/(?P<id>\d+)$', views.BRadmin_trainingteam1,name='BRadmin_trainingteam1'),
+    re_path(r'^BRadmin_traineestable/(?P<id>\d+)$', views.BRadmin_traineestable,name='BRadmin_traineestable'),
+    re_path(r'^BRadmin_trainingprofile/(?P<id>\d+)$', views.BRadmin_trainingprofile,name='BRadmin_trainingprofile'),
+    re_path(r'^BRadmin_completedtasktable/(?P<id>\d+)$', views.BRadmin_completedtasktable,name='BRadmin_completedtasktable'),
+    re_path(r'^BRadmin_topictable/(?P<id>\d+)$', views.BRadmin_topictable,name='BRadmin_topictable'),
+
+    #anwar
+    re_path(r'^BRadmin_View_Trainers$', views.BRadmin_View_Trainers, name='BRadmin_View_Trainers'),
+    re_path(r'^BRadmin_View_Trainerprofile/(?P<id>\d+)$', views.BRadmin_View_Trainerprofile, name='BRadmin_View_Trainerprofile'),
+    re_path(r'^BRadmin_View_Currenttraineesoftrainer/(?P<id>\d+)/$', views.BRadmin_View_Currenttraineesoftrainer, name='BRadmin_View_Currenttraineesoftrainer'),
+    re_path(r'^BRadmin_View_Previoustraineesoftrainer/(?P<id>\d+)/$', views.BRadmin_View_Previoustraineesoftrainer, name='BRadmin_View_Previoustraineesoftrainer'),
+    re_path(r'^BRadmin_View_Currenttraineeprofile/(?P<id>\d+)$', views.BRadmin_View_Currenttraineeprofile, name='BRadmin_View_Currenttraineeprofile'),
+    re_path(r'^BRadmin_View_Currenttraineetasks/(?P<id>\d+)$', views.BRadmin_View_Currenttraineetasks, name='BRadmin_View_Currenttraineetasks'),
+    re_path(r'^BRadmin_View_Currenttraineeattendance/(?P<id>\d+)$', views.BRadmin_View_Currenttraineeattendance, name='BRadmin_View_Currenttraineeattendance'),
+    re_path(r'^BRadmin_View_Previoustraineesoftrainer$', views.BRadmin_View_Previoustraineesoftrainer, name='BRadmin_View_Previoustraineesoftrainer'),
+    re_path(r'^BRadmin_View_Previoustraineeprofile/(?P<id>\d+)$', views.BRadmin_View_Previoustraineeprofile, name='BRadmin_View_Previoustraineeprofile'),
+    re_path(r'^BRadmin_View_Previoustraineetasks/(?P<id>\d+)$', views.BRadmin_View_Previoustraineetasks, name='BRadmin_View_Previoustraineetasks'),
+    re_path(r'^BRadmin_View_Previoustraineeattendance/(?P<id>\d+)$', views.BRadmin_View_Previoustraineeattendance, name='BRadmin_View_Previoustraineeattendance'),
+    re_path(r'^BRadmin_View_Trainerattendance/(?P<id>\d+)$', views.BRadmin_View_Trainerattendance, name='BRadmin_View_Trainerattendance'),
+    re_path(r'^BRadmin_ViewTrainerattendancesort/(?P<id>\d+)/$', views.BRadmin_ViewTrainerattendancesort, name='BRadmin_ViewTrainerattendancesort'),
+    re_path(r'^BRadmin_ViewCurrenttraineeattendancesort/(?P<id>\d+)/$', views.BRadmin_ViewCurrenttraineeattendancesort, name='BRadmin_ViewCurrenttraineeattendancesort'),
+    re_path(r'^BRadmin_ViewPrevioustraineeattendancesort/(?P<id>\d+)/$', views.BRadmin_ViewPrevioustraineeattendancesort, name='BRadmin_ViewPrevioustraineeattendancesort'),
+    re_path(r'^BRadmin_dev_attendance$',views.BRadmin_dev_attendance,name='BRadmin_dev_attendance'),
+    re_path(r'^BRadmin_page1$',views.page1,name='page1'),
+    re_path(r'^BRadmin_page3$',views.page3,name='page3'),
+    re_path(r'^desi$',views.desi,name='desi'),
+    re_path(r'^emp$',views.emp,name='emp'),
+
+
 ]

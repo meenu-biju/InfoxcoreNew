@@ -17,14 +17,15 @@
                             
                              
                      
-                              <select class="form-control" style="color:white;" name="Department">
+                        <select class="form-control" id="regdetailsdept" style="color:white;" name="Department" required>
+                                 <option selected="true" disabled="disabled" value="">-Not Selected-</option>
         {% for i in dept %}
-                                <option value=" "></option>
-                               <option value="{{i.department}}">{{i.department}}</option>
+                                <option value="{{i.id}}">{{i.department}}</option>
                                
 
                                 {% endfor %}
                               </select>
+                          
                           
                           </div>
 
@@ -33,52 +34,37 @@
                             <label>Select Designation</label>
                             
                          
-                            <select class="form-control" style="color:white;" name="designation">
-        {% for i in desig %}
-                            <option value=" "></option>
-                               <option value="{{i.designation}}">{{i.designation}}</option>
-                               
-
-                                {% endfor %}
+                                     <select class="form-control" id="regdetailsDesig" style="color:white;" name="designation">
+    <!-- <option selected="true" disabled="disabled" value="">Select an option</option> -->
                               </select>
+                          
                           </div>
-
-            
                    <div class="form-group">
                             <label>Select Employee</label>
                             
                       
-                            <select class="form-control" style="color:white;" name="projectname">
-        {% for i in emp %}
-
-                         <option value=" "></option>
-                              <option value="{{i.id}}">{{i.fullname}}</option>
+                            <select class="form-control" style="color:white;" name="projectname" id="empname">
+        <!-- {% for i in emp %}
+                              <option value="{{i.fullname}}">{{i.fullname}}</option>
                                
 
-                                {% endfor %}
+                                {% endfor %}  -->
                               </select>
                           
                           </div>
                            <div class="form-group">
                         <label for="exampleTextarea1">Task</label>
                         <textarea class="form-control" name="discrip" id="exampleTextarea1" style="color:white;" rows="4"></textarea>
-                      </div>
-                          <div class="form-group">
-                   <label for="exampleInputName1">StartDate</label>
-                        <input type="date" class="form-control" id="birthday" name="start" required style="color: white;"> 
-                   
-                    
-                      </div>
-                      
-                      
-
-             <div class="form-group">
-                       
-                        <label for="exampleInputName1">End Date</label>
-                        <input type="date" class="form-control" id="birthday" name="end" required style="color: white;"> 
-                   
-                      </div>
-           <div class="form-group">
+                           </div>
+                        <div class="form-group">
+                          <label for="exampleInputName1">StartDate</label>
+                          <input type="date" class="form-control txtDate" id="txtDate" name="start" required style="color: white;">                  
+                        </div>                                          
+                        <div class="form-group">                       
+                          <label for="exampleInputName1">End Date</label>
+                          <input type="date" class="form-control txtFrom" id="txtFrom" name="end" required style="color: white;">      
+                        </div>
+                      <div class="form-group">
                         <label>File upload</label>
                         <input type="file" name="img[]" class="file-upload-default" required style="color: white;">
                         <div class="input-group col-xs-12">
@@ -88,6 +74,40 @@
                           </span>
                         </div>
                       </div>
+                      
+      
+                      
+  <script>
+    $(function() {
+      var dtToday = new Date();
+      var month = dtToday.getMonth() + 1;
+      var day = dtToday.getDate();
+      var year = dtToday.getFullYear();
+      if (month < 10)
+          month = '0' + month.toString();
+      if (day < 10)
+          day = '0' + day.toString();
+      var maxDate = year + '-' + month + '-' + day;
+      $('.txtDate').attr('max', maxDate);
+    })
+  </script>
+<script>
+  $(function() {
+    var dtToday = new Date();
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if (month < 10)
+        month = '0' + month.toString();
+    if (day < 10)
+        day = '0' + day.toString();
+    var minDate = year + '-' + month + '-' + day;
+    $('.txtFrom').attr('min', minDate);
+  })
+</script>
+
+            
+           
             <div class="form-check form-check-flat form-check-primary">
               
             <button type="submit" class="btn btn-primary me-2">Assign</button>
@@ -98,6 +118,46 @@
     </div>
    </div>
 
+<script type="text/javascript">
+   $("#regdetailsdept").change(function () {
+        // <!-- const url = $("#personForm").attr("data-cities-url"); -->
+        const deptId = $(this).val();
+
+        $.ajax({
+            url: 'desi',
+            data: {
+                'dept_id': deptId
+            },
+            success: function (data) {
+                $("#regdetailsDesig").html(data);
+                console.log(data);
+            }
+        });
+
+    });
+   
+</script>
+
+<script type="text/javascript">
+   $("#regdetailsDesig").change(function () {
+        // <!-- const url = $("#personForm").attr("data-cities-url"); -->
+        const deptId = $(this).val();
+        const desigId = $(this).val();
+
+        $.ajax({
+            url: 'emp',
+            data: {
+                'dept_id': deptId,
+                'desig_id': desigId
+            },
+            success: function (data) {
+                $("#empname").html(data);
+                console.log(data);
+            }
+        });
+
+    });
+</script>
 
 
   {% endblock %}

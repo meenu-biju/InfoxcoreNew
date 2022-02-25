@@ -7,7 +7,7 @@
 <center>
   <div class="row " style="margin-top: 20px;">
     {% for i in  project %}
-      {% if i.progress == "accepted" %}
+      {% if i.status == "accepted" %}
     <div class="col-sm-4 grid-margin">
       <div class="card">
         <a href="/base_app/BRadmin_cmpltd_proj_det_new/{{i.id}}/" style="text-decoration: none; color: white;">

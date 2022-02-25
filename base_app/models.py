@@ -13,18 +13,6 @@ class branch_registration(models.Model):
     def __str__(self):
         return self.branch_name
 
-
-
-class designation(models.Model):
-    branch =models.ForeignKey(branch_registration, on_delete=models.DO_NOTHING, related_name='designationbranch', null=True,blank=True)
-    designation = models.CharField(max_length=100)
-    status = models.CharField(max_length=100)
-
-
-    def __str__(self):
-        return self.designation
-
-
 class department(models.Model):
     department=models.CharField(max_length=100)
     branch = models.ForeignKey(branch_registration, on_delete=models.DO_NOTHING , related_name='departmentbranch',null=True,blank=True)
@@ -33,6 +21,21 @@ class department(models.Model):
 
     def __str__(self):
         return self.department
+
+
+class designation(models.Model):
+    branch =models.ForeignKey(branch_registration, on_delete=models.DO_NOTHING, related_name='designationbranch', null=True,blank=True)
+    department = models.ForeignKey(department, on_delete=models.DO_NOTHING , related_name='departmentbranch',null=True,blank=True)
+    designation = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
+
+
+
+    def __str__(self):
+        return self.designation
+
+
+
 
 
 class create_team(models.Model):
