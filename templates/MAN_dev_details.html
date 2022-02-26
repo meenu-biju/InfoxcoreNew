@@ -1,0 +1,52 @@
+{% extends 'MAN_index.html' %} {% load static %} {% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Developers</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" style="color:white;">
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+
+                                <th> Name </th>
+                                <th> Joining Date </th>
+                                <th> Project Name </th>
+                                <th> Start Date </th>
+                                <th> End Date </th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {% for Dev in developers_data %}
+                            <tr onclick="window.location='/base_app/MAN_dev_profile/{{ Dev.id }}'">
+                                <td>
+                                    <img src="{{ Dev.photo.url}}" alt="image" />
+                                    <span class="ps-2">{{ Dev.fullname }}</span>
+                                </td>
+                                <td> {{ Dev.joiningdate }} </td>
+                                <td> {% for i in project_name %} {% if i.user_id == Dev.id %} {{ i.project }}<br><br> {% endif %} {% endfor %}</td>
+                                <td> {{ Dev.startdate }} </td>
+                                <td> {{ Dev.enddate }} </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
+{% endblock%}
